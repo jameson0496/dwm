@@ -1,5 +1,4 @@
 /* See LICENSE file for copyright and license details. */
-#include "push.c"
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
@@ -28,9 +27,11 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	/* class      instance    title       tags mask     isfloating   isfreesize   monitor */
+	{ "Gimp",     NULL,       NULL,       0,            1,           1,           -1 },
+	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           0,	      -1 },
+	{ "st",       NULL,       NULL,       0,    	    0,           0,	      -1 },
+	{ "St",       NULL,       NULL,       0,	    0,           0,	      -1 }, /* St with Xresources patch */
 };
 
 /* layout(s) */
