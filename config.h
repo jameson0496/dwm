@@ -90,7 +90,8 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
-
+ 
+#include <X11/XF86keysym.h>
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
@@ -147,6 +148,23 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_r,      quit,           {0} },
 	{ MODKEY|ControlMask,           XK_j,      pushdown,       {0} },
 	{ MODKEY|ControlMask,           XK_k,      pushup,         {0} },
+
+	{ 0,                       XF86XK_AudioRaiseVolume, spawn, SHCMD("pamixer -i 3") },
+	{ 0,                       XF86XK_AudioLowerVolume, spawn, SHCMD("pamixer -d 3") },
+	{ 0,                       XF86XK_AudioMute,        spawn, SHCMD("pamixer -t") },
+	{ 0,                       XF86XK_AudioPlay,        spawn, SHCMD("playerctl play-pause") },
+	{ 0,                       XF86XK_AudioNext,        spawn, SHCMD("playerctl next") },
+	{ 0,                       XF86XK_AudioPrev,        spawn, SHCMD("playerctl previous") },
+
+	{ MODKEY|ShiftMask,             XK_f,      spawn,          SHCMD("firefox") },
+	{ MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("pcmanfm") },
+	{ MODKEY|ShiftMask,             XK_v,      spawn,          SHCMD("st -e vim") },
+	{ MODKEY|ShiftMask,             XK_F1,     spawn,          SHCMD("spotify") },
+	{ MODKEY|ShiftMask,             XK_j,      spawn,          SHCMD("joplin-desktop") },
+	//{ MODKEY,                       XK_F11,    spawn,          SHCMD("systemctl suspend") },
+	{ MODKEY,                       XK_F11,    spawn,          SHCMD("/home/jw/.scripts/powermenu.sh") },
+	{ MODKEY|ShiftMask,             XK_F11,    spawn,          SHCMD("pkill picom & sleep 1 && picom &") },
+	//{ MODKEY|ShiftMask,             XK_F11,    spawn,          SHCMD("flameshot screen -p ~/Pictures/Screenshots/") },
 };
 
 /* button definitions */
