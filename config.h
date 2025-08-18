@@ -38,11 +38,21 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   isfreesize   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 2,       0,           0,	      -1 },
-	{ "st",       NULL,       NULL,       0,    	    0,           0,	      -1 },
-	{ "St",       NULL,       NULL,       0,	    0,           0,	      -1 }, /* St with Xresources patch */
+	/* class           instance       title                tags mask  isfloating  isfreesize  monitor */
+	{ "firefox",       NULL,          NULL,                1 << 2,    0,          0, -1 },
+	{ "Joplin",        NULL,          NULL,                1 << 3,    0,          0, -1 },
+	{ "okular",        NULL,          NULL,                1 << 3,    0,          0, -1 },
+     // { "Pcmanfm",       NULL,          NULL,                1 << 4,    0,          0, -1 },
+	{ "Spotify",       NULL,          NULL,                1 << 5,    0,          0,  1 },
+
+	{ "Microsoft",     NULL,          NULL,                0,         0,          0, -1 },
+
+    //Floating
+	{ "Gnome-2048",    NULL,          NULL,                0,         1,          1, -1 },
+	{ "VirtualBoxVM",  NULL,          "Keyboard",          0,         1,          1, -1 },
+	{ "solvespace",    NULL,          "Property Browser",  0,         1,          1, -1 },
+	{ NULL,            "matplotlib",  NULL,                0,         1,          1, -1 },
+      //{ "Minecraft 1.12.2",  NULL,     NULL,                1 << 7,    0,           0, 1 },
 };
 
 /* layout(s) */
