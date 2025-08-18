@@ -1,0 +1,2 @@
+- [ ] Improve mouse keybinds
+- [ ] fix bright monitor indicator bar
