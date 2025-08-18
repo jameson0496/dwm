@@ -164,6 +164,7 @@ static const Key keys[] = {
 	{ 0,                       XF86XK_AudioRaiseVolume, spawn, SHCMD("pamixer -i 3") },
 
 	{ MODKEY,                       XK_F11,    spawn,          SHCMD("/home/jw/.scripts/powermenu.sh") },
+        { MODKEY,                       XK_F12,    spawn,          SHCMD("/home/jw/.scripts/touchpad.sh") },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_d,      spawn,          {.v = rofidrun } },
 	{ MODKEY|ShiftMask,             XK_F1,     spawn,          SHCMD("spotify") },
