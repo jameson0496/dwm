@@ -19,7 +19,6 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 
 static const char *fonts[]          = { "Homebrew 7x12 CS:size=9", "Symbols Nerd Font:size=11" };
-static const char dmenufont[]       = "Homebrew 7x12 CS:size=9";
 
 static char normbgcolor[]           = "#282c34";
 static char normbordercolor[]       = "#282c34";
@@ -107,8 +106,6 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 
 static const char *termcmd[]  = { "st", NULL };
 
