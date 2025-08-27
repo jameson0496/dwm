@@ -14,7 +14,7 @@ static const unsigned int gappoh    = 10;       /* horiz outer gap between windo
 static const unsigned int gappov    = 10;       /* vert outer gap between windows and screen edge */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systrayonleft = 0;    /* 0: systray in the right corner, >0: systray on left of status text */
-static const unsigned int systraypinning = 2;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
+static const unsigned int systraypinning = 1;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 
@@ -47,7 +47,7 @@ static const Rule rules[] = {
 	/* class           instance       title                tags mask  isfloating  isfreesize  monitor */
 	{ "firefox",       NULL,          NULL,                1 << 2,    0,          0, -1 },
 	{ "Joplin",        NULL,          NULL,                1 << 3,    0,          0, -1 },
-	{ "okular",        NULL,          NULL,                1 << 3,    0,          0, -1 },
+     // { "okular",        NULL,          NULL,                1 << 3,    0,          0, -1 },
      // { "Pcmanfm",       NULL,          NULL,                1 << 4,    0,          0, -1 },
 	{ "Spotify",       NULL,          NULL,                1 << 5,    0,          0,  1 },
 
@@ -80,18 +80,19 @@ static const Layout layouts[] = {
 	{ "[]=",      tile },    /* first entry is default */
 	{ "[M]",      monocle },
 	{ "[@]",      spiral },
-	// { "[\\]",     dwindle },
 	{ "H[]",      deck },
 	{ "TTT",      bstack },
+	{ "###",      nrowgrid },
+	{ "|M|",      centeredmaster },
+	{ NULL,       NULL },
+
+	// { "[\\]",     dwindle },
 	// { "===",      bstackhoriz },
 	// { "HHH",      grid },
-	{ "###",      nrowgrid },
 	// { "---",      horizgrid },
 	// { ":::",      gaplessgrid },
-	{ "|M|",      centeredmaster },
 	// { ">M>",      centeredfloatingmaster },
 	// { "><>",      NULL },    /* no layout function means floating behavior */
-	{ NULL,       NULL },
 };
 
 /* key definitions */
@@ -156,20 +157,20 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 
+	{ 0,                       XF86XK_AudioRaiseVolume, spawn, SHCMD("pamixer -i 3") },
 	{ 0,                       XF86XK_AudioLowerVolume, spawn, SHCMD("pamixer -d 3") },
 	{ 0,                       XF86XK_AudioMute,        spawn, SHCMD("pamixer -t") },
 	{ 0,                       XF86XK_AudioNext,        spawn, SHCMD("playerctl next") },
 	{ 0,                       XF86XK_AudioPlay,        spawn, SHCMD("playerctl play-pause") },
 	{ 0,                       XF86XK_AudioPrev,        spawn, SHCMD("playerctl previous") },
-	{ 0,                       XF86XK_AudioRaiseVolume, spawn, SHCMD("pamixer -i 3") },
 
 	{ MODKEY,                       XK_F11,    spawn,          SHCMD("/home/jw/.scripts/powermenu.sh") },
         { MODKEY,                       XK_F12,    spawn,          SHCMD("/home/jw/.scripts/touchpad.sh") },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_d,      spawn,          {.v = rofirun } },
 	{ MODKEY,                       XK_d,      spawn,          {.v = rofidrun } },
 	{ MODKEY|ShiftMask,             XK_F1,     spawn,          SHCMD("spotify") },
 	{ MODKEY|ShiftMask,             XK_F11,    spawn,          SHCMD("pkill picom & sleep 1 && picom &") },
-	{ MODKEY|ShiftMask,             XK_d,      spawn,          {.v = rofirun } },
 	{ MODKEY|ShiftMask,             XK_f,      spawn,          SHCMD("firefox") },
 	{ MODKEY|ShiftMask,             XK_j,      spawn,          SHCMD("joplin-desktop") },
 	{ MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("pcmanfm") },
