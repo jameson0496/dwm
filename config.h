@@ -49,7 +49,7 @@ static const Rule rules[] = {
 	{ "Joplin",        NULL,          NULL,                1 << 3,    0,          0, -1 },
      // { "okular",        NULL,          NULL,                1 << 3,    0,          0, -1 },
      // { "Pcmanfm",       NULL,          NULL,                1 << 4,    0,          0, -1 },
-	{ "Spotify",       NULL,          NULL,                1 << 5,    0,          0,  1 },
+	{ "Spotify",       NULL,          NULL,                1 << 5,    0,          0,  0 },
 
     //Floating
 	{ "Gnome-2048",    NULL,          NULL,                0,         1,          1, -1 },
@@ -60,6 +60,7 @@ static const Rule rules[] = {
     // Misc
 	{ "Microsoft",     NULL,          NULL,                0,         0,          0, -1 },
 	{ "St",            NULL,          NULL,                0,         0,          0, -1 },
+	{ "St",            NULL,          "Scratchpad",        0,         1,          1, -1 },
       //{ "Minecraft 1.12.2",  NULL,     NULL,                1 << 7,    0,           0, 1 },
 
 };
@@ -167,6 +168,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_F11,    spawn,          SHCMD("/home/jw/.scripts/powermenu.sh") },
         { MODKEY,                       XK_F12,    spawn,          SHCMD("/home/jw/.scripts/touchpad.sh") },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+        { MODKEY|ShiftMask,             XK_Return, spawn,          SHCMD("st -t Scratchpad") }, //floating terminal
 	{ MODKEY|ShiftMask,             XK_d,      spawn,          {.v = rofirun } },
 	{ MODKEY,                       XK_d,      spawn,          {.v = rofidrun } },
 	{ MODKEY|ShiftMask,             XK_F1,     spawn,          SHCMD("spotify") },
@@ -174,7 +176,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_f,      spawn,          SHCMD("firefox") },
 	{ MODKEY|ShiftMask,             XK_j,      spawn,          SHCMD("joplin-desktop") },
 	{ MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("pcmanfm") },
-	{ MODKEY|ShiftMask,             XK_v,      spawn,          SHCMD("st -e vim") },
+        //{ MODKEY|ShiftMask,             XK_v,      spawn,          SHCMD("st -e nvim") },
       //{ MODKEY|ShiftMask,             XK_F11,    spawn,          SHCMD("flameshot screen -p ~/Pictures/Screenshots/") },
 
 	// { MODKEY|Mod1Mask,              XK_i,      incrigaps,      {.i = +1 } },
