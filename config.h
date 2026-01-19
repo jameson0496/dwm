@@ -134,7 +134,8 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
 	{ MODKEY|ControlMask,           XK_j,      pushdown,       {0} },
 	{ MODKEY|ControlMask,           XK_k,      pushup,         {0} },
-	{ MODKEY|ShiftMask,             XK_r,      quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_r,      spawn,          SHCMD("xfce4-session-logout") },
+	//{ MODKEY|ShiftMask,             XK_r,      quit,           {0} }, //FIXME: allow for both dwm in-place restart and xfce logout
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
@@ -158,12 +159,12 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 
-	{ 0,                       XF86XK_AudioRaiseVolume, spawn, SHCMD("pamixer -i 3") },
-	{ 0,                       XF86XK_AudioLowerVolume, spawn, SHCMD("pamixer -d 3") },
-	{ 0,                       XF86XK_AudioMute,        spawn, SHCMD("pamixer -t") },
-	{ 0,                       XF86XK_AudioNext,        spawn, SHCMD("playerctl next") },
-	{ 0,                       XF86XK_AudioPlay,        spawn, SHCMD("playerctl play-pause") },
-	{ 0,                       XF86XK_AudioPrev,        spawn, SHCMD("playerctl previous") },
+	// { 0,                       XF86XK_AudioRaiseVolume, spawn, SHCMD("pamixer -i 3") },
+	// { 0,                       XF86XK_AudioLowerVolume, spawn, SHCMD("pamixer -d 3") },
+	// { 0,                       XF86XK_AudioMute,        spawn, SHCMD("pamixer -t") },
+	// { 0,                       XF86XK_AudioNext,        spawn, SHCMD("playerctl next") },
+	// { 0,                       XF86XK_AudioPlay,        spawn, SHCMD("playerctl play-pause") },
+	// { 0,                       XF86XK_AudioPrev,        spawn, SHCMD("playerctl previous") },
 
 	{ MODKEY,                       XK_F11,    spawn,          SHCMD("/home/jw/.scripts/powermenu.sh") },
         { MODKEY,                       XK_F12,    spawn,          SHCMD("/home/jw/.scripts/touchpad.sh") },
@@ -172,7 +173,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_d,      spawn,          {.v = rofirun } },
 	{ MODKEY,                       XK_d,      spawn,          {.v = rofidrun } },
 	{ MODKEY|ShiftMask,             XK_F1,     spawn,          SHCMD("spotify") },
-	{ MODKEY|ShiftMask,             XK_F11,    spawn,          SHCMD("pkill picom & sleep 1 && picom &") },
+	//{ MODKEY|ShiftMask,             XK_F11,    spawn,          SHCMD("pkill picom & sleep 1 && picom &") },
 	{ MODKEY|ShiftMask,             XK_f,      spawn,          SHCMD("firefox") },
 	{ MODKEY|ShiftMask,             XK_j,      spawn,          SHCMD("joplin-desktop") },
 	{ MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("pcmanfm") },
