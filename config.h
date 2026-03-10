@@ -27,7 +27,7 @@ static char selfgcolor[]            = "#282c34";
 static char selbordercolor[]        = "#61afef";
 static char selbgcolor[]            = "#61afef";
 
-static const char *colors[][3]      = {
+static char *colors[][3]      = {
 	/*               fg         bg         border   */
         [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
         [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
@@ -147,6 +147,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_m,      zoom,           {0} },
+	{ MODKEY,                       XK_x,      xrdb,           {.v = NULL } },
 
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
