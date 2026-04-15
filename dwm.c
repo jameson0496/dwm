@@ -299,6 +299,7 @@ static int xerror(Display *dpy, XErrorEvent *ee);
 static int xerrordummy(Display *dpy, XErrorEvent *ee);
 static int xerrorstart(Display *dpy, XErrorEvent *ee);
 static void xrdb(const Arg *arg);
+static void xrdb_reload(int sig);
 static void zoom(const Arg *arg);
 
 /* variables */
@@ -1916,6 +1917,8 @@ setup(void)
 	/* clean up any zombies (inherited from .xinitrc etc) immediately */
 	while (waitpid(-1, NULL, WNOHANG) > 0);
 
+        signal(SIGUSR1, xrdb_reload);
+
 	/* init screen */
 	screen = DefaultScreen(dpy);
 	sw = DisplayWidth(dpy, screen);
@@ -2748,13 +2751,35 @@ systraytomon(Monitor *m) {
 void
 xrdb(const Arg *arg)
 {
+    //printf("test 6\n");
   loadxrdb();
+    printf("test 7\n");
   int i;
-  for (i = 0; i < LENGTH(colors); i++)
+  for (i = 0; i < LENGTH(colors); i++) {
+        printf("2nd test %d\n", i);
                 scheme[i] = drw_scm_create(drw, colors[i], 3);
-  focus(NULL);
-  arrange(NULL);
 }
+    printf("test 8\n");
+  focus(NULL);
+    printf("test 9\n");
+  arrange(NULL);
+    printf("test 10\n");
+}
+
+void
+xrdb_reload(int sig)
+{
+    //printf("test 2\n");
+    //{ MODKEY, XK_x, xrdb, {.v = NULL } },
+    const Arg arg = {.v = NULL};
+    xrdb(&arg);
+    //xrdb(NULL);
+
+    printf("test 3\n");
+    signal(SIGUSR1, xrdb_reload);
+    printf("test 4\n");
+}
+
 
 void
 zoom(const Arg *arg)
@@ -2782,6 +2807,8 @@ main(int argc, char *argv[])
 	checkotherwm();
         XrmInitialize();
         loadxrdb();
+        //fputs("test 1\n", stdout);
+        printf("test 5\n");
 	setup();
 #ifdef __OpenBSD__
 	if (pledge("stdio rpath proc exec", NULL) == -1)

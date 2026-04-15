@@ -169,15 +169,21 @@ drw_fontset_free(Fnt *font)
 void
 drw_clr_create(Drw *drw, Clr *dest, const char *clrname)
 {
+        printf("4th test 1\n");
 	if (!drw || !dest || !clrname)
 		return;
+        printf("4th test 2\n");
 
 	if (!XftColorAllocName(drw->dpy, DefaultVisual(drw->dpy, drw->screen),
 	                       DefaultColormap(drw->dpy, drw->screen),
-	                       clrname, dest))
+	                       clrname, dest)) {
+        printf("4th test 3\n");
 		die("error, cannot allocate color '%s'", clrname);
+}
+        printf("4th test 4\n");
 
 	dest->pixel |= 0xff << 24;
+        printf("4th test 5\n");
 }
 
 /* Create color schemes. */
@@ -187,12 +193,18 @@ drw_scm_create(Drw *drw, char *clrnames[], size_t clrcount)
 	size_t i;
 	Clr *ret;
 
+        printf("3rd test 1\n");
 	/* need at least two colors for a scheme */
 	if (!drw || !clrnames || clrcount < 2 || !(ret = ecalloc(clrcount, sizeof(Clr))))
 		return NULL;
+        printf("3rd test 2\n");
 
-	for (i = 0; i < clrcount; i++)
+	for (i = 0; i < clrcount; i++) {
+                printf("3rd test 3\n");
 		drw_clr_create(drw, &ret[i], clrnames[i]);
+                printf("3rd test 4\n");
+}
+        printf("3rd test 5\n");
 	return ret;
 }
 
