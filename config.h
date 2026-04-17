@@ -59,8 +59,8 @@ static const Rule rules[] = {
 
     // Misc
 	{ "Microsoft",     NULL,          NULL,                0,         0,          0, -1 },
-	{ "St",            NULL,          NULL,                0,         0,          0, -1 },
-	{ "St",            NULL,          "Scratchpad",        0,         1,          1, -1 },
+	{ "st-256color",   NULL,          NULL,                0,         0,          0, -1 },
+	{ "st-256color",   NULL,          "Scratchpad",        0,         1,          1, -1 },
       //{ "Minecraft 1.12.2",  NULL,     NULL,                1 << 7,    0,           0, 1 },
 
 };
