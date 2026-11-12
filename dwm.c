@@ -2600,6 +2600,8 @@ updatesystray(void)
 	for (w = 0, i = systray->icons; i; i = i->next) {
 		/* make sure the background color stays the same */
 		wa.background_pixel  = scheme[SchemeNorm][ColBg].pixel;
+		// wa.background_pixel = (unsigned long) 0x00 << 24;
+		// wa.background_pixel = scheme[SchemeNorm][ColBg].pixel | 0x00 << 24;
 		XChangeWindowAttributes(dpy, i->win, CWBackPixel, &wa);
 		XMapRaised(dpy, i->win);
 		w += systrayspacing;

@@ -34,7 +34,7 @@ static char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "", "󰈹", "󰈙", "󰆋", "󰓇" };
+static const char *tags[] = { "1", "", "󰈹", "󰈙", "󰆋", "󰓇", "7", "8", "9" };
 //static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
@@ -59,8 +59,8 @@ static const Rule rules[] = {
 
     // Misc
 	{ "Microsoft",     NULL,          NULL,                0,         0,          0, -1 },
-	{ "st-256color",   NULL,          NULL,                0,         0,          0, -1 },
-	{ "st-256color",   NULL,          "Scratchpad",        0,         1,          1, -1 },
+	{ "st-256color",   NULL,          NULL,                0,         1,          1, -1 },
+	{ "st-256color",   NULL,          "st",                0,         0,          0, -1 },
       //{ "Minecraft 1.12.2",  NULL,     NULL,                1 << 7,    0,           0, 1 },
 
 };
@@ -78,15 +78,15 @@ static const int refreshrate = 120;  /* refresh rate (per second) for client mov
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[M]",      monocle },    /* first entry is default */
-	{ "[]=",      tile },
-	{ "[@]",      spiral },
+	{ "[]=",      tile },    /* first entry is default */
+	{ "[M]",      monocle },
 	{ "H[]",      deck },
 	{ "TTT",      bstack },
 	{ "###",      nrowgrid },
 	{ "|M|",      centeredmaster },
 	{ NULL,       NULL },
 
+	// { "[@]",      spiral },
 	// { "[\\]",     dwindle },
 	// { "===",      bstackhoriz },
 	// { "HHH",      grid },
@@ -160,25 +160,10 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 
 	// { 0,                       XF86XK_AudioRaiseVolume, spawn, SHCMD("pamixer -i 3") },
-	// { 0,                       XF86XK_AudioLowerVolume, spawn, SHCMD("pamixer -d 3") },
-	// { 0,                       XF86XK_AudioMute,        spawn, SHCMD("pamixer -t") },
-	// { 0,                       XF86XK_AudioNext,        spawn, SHCMD("playerctl next") },
-	// { 0,                       XF86XK_AudioPlay,        spawn, SHCMD("playerctl play-pause") },
-	// { 0,                       XF86XK_AudioPrev,        spawn, SHCMD("playerctl previous") },
-
-	// { MODKEY,                       XK_F11,    spawn,          SHCMD("/home/jw/.local/bin/powermenu.sh") },
         // { MODKEY,                       XK_F12,    spawn,          SHCMD("/home/jw/.local/bin/touchpad.sh") },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-        // { MODKEY|ShiftMask,             XK_Return, spawn,          SHCMD("st -t Scratchpad -e bash") }, //floating terminal
 	{ MODKEY|ShiftMask,             XK_d,      spawn,          {.v = rofirun } },
 	{ MODKEY,                       XK_d,      spawn,          {.v = rofidrun } },
-	// { MODKEY|ShiftMask,             XK_F1,     spawn,          SHCMD("spotify") },
-	// { MODKEY|ShiftMask,             XK_F11,    spawn,          SHCMD("pkill picom & sleep 1 && picom &") },
-	// { MODKEY|ShiftMask,             XK_f,      spawn,          SHCMD("firefox") },
-	// { MODKEY|ShiftMask,             XK_j,      spawn,          SHCMD("joplin-desktop") },
-	// { MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("pcmanfm") },
-        // { MODKEY|ShiftMask,             XK_v,      spawn,          SHCMD("st -e nvim") },
-        // { MODKEY|ShiftMask,             XK_F11,    spawn,          SHCMD("flameshot screen -p ~/Pictures/Screenshots/") },
 
 	// { MODKEY|Mod1Mask,              XK_i,      incrigaps,      {.i = +1 } },
 	// { MODKEY|Mod1Mask|ShiftMask,    XK_i,      incrigaps,      {.i = -1 } },
