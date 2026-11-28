@@ -113,6 +113,11 @@ static const char *termcmd[]  = { "st", NULL };
 
 static const char *rofidrun[] = { "rofi", "-show", "drun" };
 static const char *rofirun[] = { "rofi", "-show", "run" };
+
+void softquit(const Arg *arg)
+{
+    exit(5);
+}
  
 #include <X11/XF86keysym.h>
 static const Key keys[] = {
@@ -134,7 +139,8 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
 	{ MODKEY|ControlMask,           XK_j,      pushdown,       {0} },
 	{ MODKEY|ControlMask,           XK_k,      pushup,         {0} },
-	{ MODKEY|ShiftMask,             XK_r,      quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_r,      softquit,       {0} },
+	{ MODKEY|ShiftMask,             XK_e,      quit,           {0} },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
